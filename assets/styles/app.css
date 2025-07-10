@@ -1,3 +1,2 @@
-body {
-    background-color: skyblue;
-}
+@import "tailwindcss";
+@import '../vendor/flowbite/dist/flowbite.min.css';

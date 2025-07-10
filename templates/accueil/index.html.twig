@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - SiteTest{% endblock %}
+
+{% block body %}
+    <div class="bg-gray-100 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-white">
+        <header class="bg-blue-600 text-white py-6 shadow">
+            <div class="container mx-auto px-4">
+                <h1 class="text-3xl font-bold">Bienvenue sur notre site</h1>
+                <p class="text-sm text-blue-100">Votre solution simple et efficace</p>
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4 py-12">
+            <section class="text-center mb-12">
+                <h2 class="text-2xl font-semibold mb-4">Page d'accueil basique avec Tailwind CSS</h2>
+                <p class="text-gray-700 dark:text-gray-300 mb-6">
+                    Ce site utilise Tailwind CSS pour un design moderne, clair et responsive.
+                </p>
+                <a href="{{ path('contact') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">
+                    Contactez-nous
+                </a>
+            </section>
+
+            <section class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded shadow">
+                    <h3 class="text-xl font-semibold mb-2">Fonctionnalité 1</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Une fonctionnalité claire et bien expliquée pour vous servir.
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded shadow">
+                    <h3 class="text-xl font-semibold mb-2">Fonctionnalité 2</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Une autre fonctionnalité pour démontrer la puissance de Tailwind.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="bg-gray-800 text-gray-200 py-4 text-center">
+            &copy; {{ "now"|date("Y") }} MonSite - Tous droits réservés.
+        </footer>
+    </div>
+{% endblock %}
+
