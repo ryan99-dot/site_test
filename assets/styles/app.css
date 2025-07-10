@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @import '../vendor/flowbite/dist/flowbite.min.css';
+
+html {
+  overflow-y: scroll;
+}

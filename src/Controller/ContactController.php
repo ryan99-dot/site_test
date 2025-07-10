@@ -19,21 +19,25 @@ final class ContactController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $email = new Email()
-                ->from($data['email'])
-                ->to('admin@test.fr')
-                ->subject('Test')
-                ->text($data['message']);
-            $mailer->send($email);
+            try {
+                $email = (new Email())
+                    ->from($data['email'])
+                    ->to('admin@test.fr')
+                    ->subject('Test')
+                    ->text($data['message']);
+                $mailer->send($email);
 
-            $emailConfirmation = new Email()
-                ->from('admin@test.fr')
-                ->to($data['email'])
-                ->subject('Test envoyé')
-                ->text("Votre message sur NOTRE SITE DE TEST a bien été envoyé");
-            $mailer->send($emailConfirmation);
-            $this->addFlash('success', 'Votre message a été envoyé avec succès.');
-            return $this->redirectToRoute('contact');
+                $emailConfirmation = (new Email())
+                    ->from('admin@test.fr')
+                    ->to($data['email'])
+                    ->subject('Test envoyé')
+                    ->text("Votre message sur NOTRE SITE DE TEST a bien été envoyé");
+                $mailer->send($emailConfirmation);
+                $this->addFlash('success', 'Votre message a été envoyé avec succès.');
+                return $this->redirectToRoute('accueil');
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'Erreur lors de l\'envoi de l\'email. Veuillez réessayer.');
+            }
         }
 
         return $this->render('contact/index.html.twig', [
